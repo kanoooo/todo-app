@@ -1,5 +1,7 @@
 <?php
 
+Auth::routes();
+
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@index')->name('home');
 
@@ -17,8 +19,4 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
-Auth::routes();
 
-Route::get('test',function(){
-    return 13243488888;
-});
