@@ -20,5 +20,5 @@ Route::group(['middleware' => 'auth'], function() {
 Auth::routes();
 
 Route::get('test',function(){
-    return 1324345;
+    return 13243488888;
 });
