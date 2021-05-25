@@ -46,8 +46,18 @@
                 <input type="text" class="form-control" name="due_date" id="due_date"
                        value="{{ old('due_date') ?? $task->formatted_due_date }}" />
               </div>
-              <div class="text-right">
-                <button type="submit" class="btn btn-primary">送信</button>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="text-left">
+                    <button type="button" class="btn btn-danger" onclick="location.href='{{ route('tasks.delete',['folder' => $folder,'task' => $task]) }}'">削除</button>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="text-right">
+                    <button type="submit" class="btn btn-primary">送信</button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

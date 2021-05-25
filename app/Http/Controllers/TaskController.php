@@ -71,6 +71,7 @@ class TaskController extends Controller
      */
     public function showEditForm(Folder $folder,Task $task)
     {
+
         $this->checkRelation($folder, $task);
 
         if ($folder->id !== $task->folder_id) {
@@ -79,6 +80,7 @@ class TaskController extends Controller
 
         return view('tasks/edit', [
             'task' => $task,
+            'folder' => $folder,
         ]);
     }
 
@@ -112,5 +114,13 @@ class TaskController extends Controller
         if ($folder->id !== $task->folder_id) {
             abort(404);
         }
+    }
+
+    public function delete(Folder $folder,Task $task){
+        $task->delete();
+
+        return redirect()->route('tasks.index',[
+            'folder' => $folder,
+        ]);
     }
 }
