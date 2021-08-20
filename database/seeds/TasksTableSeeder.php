@@ -4,6 +4,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+use App\Folder;
+
 class TasksTableSeeder extends Seeder
 {
     /**
@@ -13,15 +15,22 @@ class TasksTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1, 3) as $num) {
-            DB::table('tasks')->insert([
-                'folder_id' => 1,
-                'title' => "サンプルタスク {$num}",
-                'status' => $num,
-                'due_date' => Carbon::now()->addDay($num),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
+        $folders = Folder::get();
+
+        foreach($folders as $folder){
+            foreach (range(1, 3) as $num) {
+                DB::table('tasks')->insert([
+                    'folder_id' => $folder->id,
+                    'title' => "サンプルタスク {$num}",
+                    'status' => $num,
+                    'due_date' => Carbon::now()->addDay($num),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
         }
+
+
+
     }
 }

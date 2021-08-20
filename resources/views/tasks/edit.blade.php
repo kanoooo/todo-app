@@ -50,12 +50,22 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="text-left">
-                    <button type="button" class="btn btn-danger" onclick="location.href='{{ route('tasks.delete',['folder' => $folder,'task' => $task]) }}'">削除</button>
+                    {{-- <form method="post" action="/folders/{folder}/tasks/{task}/delete"> --}}
+                    <form method="post">
+                      {{-- {{ csrf_field() }} --}}
+                      @csrf
+                      @method("delete")
+                      <input type="submit" value="削除" class="btn btn-danger" onclick='return confirm("このタスクを削除しますか？");'>
+                    </form>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="text-right">
-                    <button type="submit" class="btn btn-primary">送信</button>
+                    {{-- fprm --}}
+                    <form method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-primary">送信</button>
+                    </form>
                   </div>
                 </div>
               </div>

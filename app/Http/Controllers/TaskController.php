@@ -71,7 +71,6 @@ class TaskController extends Controller
      */
     public function showEditForm(Folder $folder,Task $task)
     {
-
         $this->checkRelation($folder, $task);
 
         if ($folder->id !== $task->folder_id) {

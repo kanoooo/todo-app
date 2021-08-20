@@ -13,12 +13,17 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'test',
-            'email' => 'dummy@email.com',
-            'password' => bcrypt('test1234'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        $users = ["dummy","test","1111"];
+
+        foreach ($users as $user) {
+            DB::table('users')->insert([
+                'name' => $user,
+                'email' => "$user"."@email.com",
+                'password' => bcrypt('test1234'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+        }
     }
 }
