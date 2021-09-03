@@ -22,3 +22,6 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 
+Route::get(function(){
+    return 12457;
+});
