@@ -20,8 +20,3 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('/folders/{folder}/tasks/{task}/edit', 'TaskController@delete')->name('tasks.delete');
     // });
 });
-
-
-Route::get(function(){
-    return 12457;
-});
